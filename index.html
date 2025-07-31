@@ -1,0 +1,881 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthikeyan M | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        'primary': '#3B82F6',
+                        'secondary': '#8B5CF6',
+                        'accent': '#06B6D4',
+                        'dark': '#0F172A',
+                        'darker': '#020617'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'bounce-slow': 'bounce 3s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .skill-bar {
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        
+        .skill-animate {
+            width: var(--skill-width);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-darker dark:via-dark dark:to-slate-900 text-gray-800 dark:text-white transition-colors duration-300">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold gradient-text">Karthikeyan M</h1>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-8 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-primary transition-colors duration-300">Home</a>
+                        <a href="#about" class="hover:text-primary transition-colors duration-300">About</a>
+                        <a href="#skills" class="hover:text-primary transition-colors duration-300">Skills</a>
+                        <a href="#projects" class="hover:text-primary transition-colors duration-300">Projects</a>
+                        <a href="#contact" class="hover:text-primary transition-colors duration-300">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <span class="sr-only">Toggle theme</span>
+                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Hire Me
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-16">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-slide-up">
+                <div class="mb-6">
+                    <span class="text-sm font-medium text-primary dark:text-accent uppercase tracking-wide">Full Stack Developer</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Hi, I'm <span class="gradient-text">Karthikeyan</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                    Aspiring Full-Stack Developer passionate about crafting innovative web solutions with Python, Django, and React. I transform ideas into scalable, user-friendly applications.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#projects" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="border-2 border-primary text-primary dark:text-white dark:border-white px-8 py-3 rounded-lg hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-dark transition-all duration-300 text-center">
+                        Contact Me
+                    </a>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="mt-8 flex flex-wrap gap-6 text-sm text-gray-600 dark:text-gray-400">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                        </svg>
+                        Dindigul, India
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                        karthikmurugesan14323@gmail.com
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        +91 9159021792
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center animate-fade-in">
+                <div class="relative">
+                    <div class="w-80 h-80 bg-gradient-to-br from-primary via-secondary to-accent rounded-full animate-float"></div>
+                    <div
+                        class="absolute inset-4 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center overflow-hidden">
+                        <img src="./vk.jpg" alt="image" class="w-full h-full object-cover rounded-full" />
+                    </div>
+                </div>
+            </div>
+            </div>
+            </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    I'm a passionate full-stack developer with a strong foundation in modern web technologies
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                        I specialize in full-stack development using cutting-edge technologies like React, Django, and modern CSS frameworks. My passion lies in building elegant user interfaces and efficient backend systems that solve real-world problems.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold mb-4">Education & Experience</h3>
+                        
+                        <div class="border-l-4 border-primary pl-6 space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-primary">Bachelor of Science in Computer Science</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Arulmigu Palaniandavar College of Arts and Culture, Palani</p>
+                                <p class="text-sm text-gray-500">2020-2023 | CGPA: 74.5%</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-secondary">Python Backend Developer Intern</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Cloudswan Solutions</p>
+                                <p class="text-sm text-gray-500">Backend API development & Django framework</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Problem Solver</span>
+                        <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">Quick Learner</span>
+                        <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">Team Player</span>
+                        <span class="px-3 py-1 bg-green-500/10 text-green-600 rounded-full text-sm">Clean Code</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass-effect p-6 rounded-xl card-hover">
+                        <div class="text-3xl mb-3">🎯</div>
+                        <h3 class="font-semibold mb-2">Career Goal</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Lead development teams and contribute to scalable software architecture</p>
+                    </div>
+                    <div class="glass-effect p-6 rounded-xl card-hover">
+                        <div class="text-3xl mb-3">🚀</div>
+                        <h3 class="font-semibold mb-2">Current Focus</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Advanced database management and cloud technologies</p>
+                    </div>
+                    <div class="glass-effect p-6 rounded-xl card-hover">
+                        <div class="text-3xl mb-3">💡</div>
+                        <h3 class="font-semibold mb-2">Innovation</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Building scalable solutions with modern frameworks</p>
+                    </div>
+                    <div class="glass-effect p-6 rounded-xl card-hover">
+                        <div class="text-3xl mb-3">🎓</div>
+                        <h3 class="font-semibold mb-2">Learning</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">DevOps practices and modern development workflows</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical <span class="gradient-text">Skills</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Here are the technologies and tools I work with to bring ideas to life
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg card-hover">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Frontend Technologies</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">HTML5 & CSS3</span>
+                                <span class="text-sm text-gray-500">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-primary to-secondary h-2 rounded-full" style="--skill-width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">JavaScript (ES6+)</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-primary to-secondary h-2 rounded-full" style="--skill-width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">React.js</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-primary to-secondary h-2 rounded-full" style="--skill-width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Bootstrap</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-primary to-secondary h-2 rounded-full" style="--skill-width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Backend -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg card-hover">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-semibold mb-6 text-secondary">Backend Technologies</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Python</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-secondary to-accent h-2 rounded-full" style="--skill-width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Django</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-secondary to-accent h-2 rounded-full" style="--skill-width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Django REST Framework</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-secondary to-accent h-2 rounded-full" style="--skill-width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">RESTful APIs</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-secondary to-accent h-2 rounded-full" style="--skill-width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Database & Tools -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg card-hover">
+                    <div class="text-4xl mb-4">🛠️</div>
+                    <h3 class="text-xl font-semibold mb-6 text-accent">Database & Tools</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">SQL & MySQL</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-accent to-green-500 h-2 rounded-full" style="--skill-width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Git & GitHub</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-accent to-green-500 h-2 rounded-full" style="--skill-width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">VS Code</span>
+                                <span class="text-sm text-gray-500">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-accent to-green-500 h-2 rounded-full" style="--skill-width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Postman</span>
+                                <span class="text-sm text-gray-500">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-accent to-green-500 h-2 rounded-full" style="--skill-width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Here are some of my recent projects that showcase my skills and experience
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Invoice Management System -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <div class="text-6xl text-white">📊</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold">Invoice Management System</h3>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Recent</span>
+                        </div>
+                        
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            A comprehensive invoice management system with multi-step workflow for service-based businesses featuring client management, automated invoice generation, and payment processing.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Key Features:</h4>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                <li>• Client registration with billing information</li>
+                                <li>• Automated invoice number generation</li>
+                                <li>• Professional receipt generation</li>
+                                <li>• RESTful API architecture</li>
+                                <li>• Real-time form validation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Django REST</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">JavaScript</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">MySQL</span>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                View Demo
+                            </a>
+                            <a href="#" class="flex-1 border border-primary text-primary text-center py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- E-Commerce Website -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
+                        <div class="text-6xl text-white">🛒</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold">E-Commerce Website</h3>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Academic</span>
+                        </div>
+                        
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            A full-featured e-commerce platform for clothing retail with intuitive shopping experience, secure authentication, and comprehensive admin panel.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Key Features:</h4>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                <li>• Product catalog with search & filtering</li>
+                                <li>• Secure user authentication system</li>
+                                <li>• Shopping cart with session management</li>
+                                <li>• Customer review and rating system</li>
+                                <li>• Admin panel for inventory management</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs">HTML</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">CSS</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">JavaScript</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">Django</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">Bootstrap</span>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 bg-secondary text-white text-center py-2 rounded-lg hover:bg-secondary/90 transition-colors">
+                                View Demo
+                            </a>
+                            <a href="#" class="flex-1 border border-secondary text-secondary text-center py-2 rounded-lg hover:bg-secondary hover:text-white transition-colors">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20 px-4 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Certifications & <span class="gradient-text">Learning</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Continuous learning and skill development through certifications and courses
+                </p>
+            </div>
+
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-3xl mb-4">🏆</div>
+                    <h3 class="font-semibold mb-2 text-primary">Python Backend Development</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Cloudswan Solutions</p>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div class="w-full bg-gradient-to-r from-primary to-secondary h-2 rounded-full"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-3xl mb-4">📜</div>
+                    <h3 class="font-semibold mb-2 text-secondary">Python Programming 101</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Skillup (Code: 4574415)</p>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div class="w-full bg-gradient-to-r from-secondary to-accent h-2 rounded-full"></div>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Replace the Certifications Section with this -->
+
+<!-- <section class="py-20 px-4 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Certifications</h2>
+      <p class="text-gray-600 dark:text-gray-400">Verified credentials showcasing my expertise.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover">
+        <div class="flex items-start gap-4">
+          <img src="python-certificate.jpg" alt="Simplilearn Python Certification" class="w-24 h-24 object-contain border border-gray-200 rounded-lg">
+          <div>
+            <h3 class="font-semibold text-lg">Python Programming 101</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Simplilearn | Oct 2023</p>
+            <p class="text-sm mb-3">Certificate Code: 4574415</p>
+            <a href="python.pdf" download class="text-primary text-sm font-medium hover:underline">Download PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover">
+        <div class="flex items-start gap-4">
+          <img src="cloudswan-certificate.jpeg" alt="Cloudswan Backend Certification" class="w-24 h-24 object-contain border border-gray-200 rounded-lg">
+          <div>
+            <h3 class="font-semibold text-lg">Python Backend Development</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Cloudswan Solutions | Jul-Oct 2023</p>
+            <a href="WhatsApp Image 2025-07-30 at 9.58.27 PM.jpeg" download class="text-primary text-sm font-medium hover:underline">Download Image</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    I'm always open to discussing new opportunities and interesting projects. Let's create something amazing together!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Let's Connect</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-8">
+                            Whether you have a project in mind, want to collaborate, or just want to say hello, I'd love to hear from you.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-600 dark:text-gray-400">karthikmurugesan14323@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-gray-600 dark:text-gray-400">+91 9159021792</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Dindigul, Tamil Nadu, India</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="pt-8">
+                        <h4 class="font-semibold mb-4">Follow Me</h4>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-900 text-white rounded-lg flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <form class="space-y-6" id="contact-form">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name"
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors"
+                                placeholder="Your Name"
+                                required
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email"
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors"
+                                placeholder="your.email@example.com"
+                                required
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject"
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors"
+                                placeholder="Project Discussion"
+                                required
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message"
+                                rows="4"
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors resize-none"
+                                placeholder="Tell me about your project..."
+                                required
+                            ></textarea>
+                        </div>
+                        
+                        <button 
+                            type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4 gradient-text">Karthikeyan M</h3>
+                <p class="text-gray-400 mb-6">Full Stack Developer | Python | Django | React</p>
+                
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                </div>
+                
+                <div class="border-t border-gray-800 pt-8">
+                    <p class="text-gray-500 text-sm">
+                        &copy; 2025 Karthikeyan M. All rights reserved. | Built with passion and dedication.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button 
+        id="scroll-to-top" 
+        class="fixed bottom-6 right-6 bg-gradient-to-r from-primary to-secondary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:scale-110 z-50"
+    >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.classList.toggle('dark', currentTheme === 'dark');
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate skill bars on scroll
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('skill-animate');
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+        }
+
+        // Initialize animations on page load
+        window.addEventListener('load', () => {
+            animateSkills();
+        });
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Simple form validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Add scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
